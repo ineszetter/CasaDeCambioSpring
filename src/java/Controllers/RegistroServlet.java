@@ -7,11 +7,8 @@ package Controllers;
 
 import Beans.Tblusuario;
 import Constantes.RutasConstantes;
-import Helpers.SecurityHelper;
 import Persistencia.DAO.tblUsuarioDAO;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Proyectos
  */
-public class LoginServlet extends HttpServlet {
+public class RegistroServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,7 +33,7 @@ public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(RutasConstantes.RUTA_LOGIN);
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(RutasConstantes.RUTA_REGISTRO);
         dispatcher.forward(request, response);
     }
 
@@ -66,26 +63,21 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            //Here username and password are the names which I have given in the input box in Login.jsp page. Here I am retrieving the values entered by the user and keeping in instance variables for further use.
+        Tblusuario usuario = new Tblusuario();
 
-            Tblusuario usuario = new Tblusuario();
+        usuario.setUsuario(request.getParameter("usuario"));
+        usuario.setPassword(request.getParameter("password").getBytes());
+        usuario.setEmail(request.getParameter("email"));
 
-            usuario.setUsuario(request.getParameter("usuario"));
-            usuario.setPassword(SecurityHelper.encrypt(request.getParameter("password").getBytes()));
-
-            tblUsuarioDAO loginDao = new tblUsuarioDAO();
-            if (loginDao.autenticarUsuario(usuario)) {
-                request.setAttribute("userName", usuario.getUsuario()); //with setAttribute() you can define a "key" and value pair so that you can get it in future using getAttribute("key")
-                request.getRequestDispatcher(RutasConstantes.RUTA_HOME).forward(request, response);//RequestDispatcher is used to send the control to the invoked page.
-            }
-
-            request.setAttribute("errMessage", "Cuenta no validada"); //If authenticateUser() function returnsother than SUCCESS string it will be sent to Login page again. Here the error message returned from function has been stored in a errMessage key.
-            request.getRequestDispatcher(RutasConstantes.RUTA_LOGIN).forward(request, response);//forwarding the request
-        } catch (Exception ex) {
-            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+        tblUsuarioDAO loginDao = new tblUsuarioDAO();
+        if (loginDao.registrarUsuario(usuario)) {
+            request.setAttribute("userName", usuario.getUsuario());
+            request.getRequestDispatcher(RutasConstantes.RUTA_LOGIN).forward(request, response);
         }
+
+        request.setAttribute("errMessage", "Hubo un error al registrar su cuenta. Intente mas tarde.");
+        request.getRequestDispatcher(RutasConstantes.RUTA_REGISTRO).forward(request, response);
+
     }
 
-// </editor-fold>
 }

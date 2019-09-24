@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Inicio de sesión</title>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/Resources/css/login.css" />
     </head>
     
@@ -27,10 +27,11 @@
             : request.getAttribute("errMessage")%></span>
 
      <input type="submit" value="Login"></input>
-     <input type="reset" value="Reset"></input>
-
     </form>
-        </div>
+    <form name="form" action="RegistroServlet" method="get">
+     <input type="submit" value="Registro" ></input>              
+    </form>
+    </div>
     </div>
     <script src="${pageContext.request.contextPath}/Resources/js/validaciones.js" type="text/javascript"></script>
     </body>
