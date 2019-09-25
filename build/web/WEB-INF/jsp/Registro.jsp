@@ -26,7 +26,7 @@
     Usuario: 
     <input type="text" name="usuario" />
     Contraseña: 
-    <input type="password" name="password" />
+    <input type="password" name="contrasena" />
     Repita Contraseña: 
     <input type="password" name="validarPassword" />
     

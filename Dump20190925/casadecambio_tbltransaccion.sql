@@ -18,28 +18,30 @@ USE `casadecambio`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `catdivisa`
+-- Table structure for table `tbltransaccion`
 --
 
-DROP TABLE IF EXISTS `catdivisa`;
+DROP TABLE IF EXISTS `tbltransaccion`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `catdivisa` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(50) DEFAULT NULL,
-  `valor` double DEFAULT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `tbltransaccion` (
+  `idtblTransaccion` int(11) NOT NULL AUTO_INCREMENT,
+  `FechaHora` datetime NOT NULL,
+  `idDivisa1` int(11) NOT NULL,
+  `idDivisa2` int(11) NOT NULL,
+  `idTipoTransaccion` int(11) NOT NULL,
+  `ValorTotal` float NOT NULL,
+  PRIMARY KEY (`idtblTransaccion`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `catdivisa`
+-- Dumping data for table `tbltransaccion`
 --
 
-LOCK TABLES `catdivisa` WRITE;
-/*!40000 ALTER TABLE `catdivisa` DISABLE KEYS */;
-INSERT INTO `catdivisa` VALUES (1,'DÓLAR',20),(2,'EURO',22),(3,'YUAN',8),(4,'BOLIVAR',100),(5,'DÓLAR CANADIENSE',17.5),(6,'CORONA',44),(7,'RUBLO',64),(10,'LIBRA',22);
-/*!40000 ALTER TABLE `catdivisa` ENABLE KEYS */;
+LOCK TABLES `tbltransaccion` WRITE;
+/*!40000 ALTER TABLE `tbltransaccion` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbltransaccion` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-09-24  9:27:35
+-- Dump completed on 2019-09-25 13:51:46

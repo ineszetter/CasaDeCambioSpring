@@ -66,7 +66,7 @@ public class RegistroServlet extends HttpServlet {
         Tblusuario usuario = new Tblusuario();
 
         usuario.setUsuario(request.getParameter("usuario"));
-        usuario.setPassword(request.getParameter("password").getBytes());
+        usuario.setContrasena(request.getParameter("contrasena").getBytes());
         usuario.setEmail(request.getParameter("email"));
 
         tblUsuarioDAO loginDao = new tblUsuarioDAO();

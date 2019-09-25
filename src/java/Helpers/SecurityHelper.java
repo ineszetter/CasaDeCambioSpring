@@ -28,7 +28,7 @@ public class SecurityHelper {
      * @return
      * @throws Exception
      */
-    private static byte[] generateKey() throws Exception {
+    public static byte[] generateKey() throws Exception {
         KeyGenerator keyGenerator = KeyGenerator.getInstance(KEY_ALGORITHM);
         keyGenerator.init(56); //Des must be 56, the initial method does not have to call
         SecretKey secretKey = keyGenerator.generateKey();
@@ -47,22 +47,6 @@ public class SecurityHelper {
         SecretKeyFactory keyFactory = SecretKeyFactory.getInstance(KEY_ALGORITHM);
         SecretKey secretKey = keyFactory.generateSecret(des);
         return secretKey;
-    }
-
-    /**
-     * Encryption
-     *
-     * @param data
-     * @Param data
-     * @return byte[]
-     * @throws Exception
-     */
-    public static byte[] encrypt(byte[] data) throws Exception {
-        byte[] key = generateKey();
-        Key k = toKey(key);
-        Cipher cipher = Cipher.getInstance(CIPHER_ALGORITHM_ECB);
-        cipher.init(Cipher.ENCRYPT_MODE, k);
-        return cipher.doFinal(data);
     }
 
     /**

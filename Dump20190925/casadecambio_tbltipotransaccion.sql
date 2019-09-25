@@ -18,30 +18,27 @@ USE `casadecambio`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `tbltransaccion`
+-- Table structure for table `tbltipotransaccion`
 --
 
-DROP TABLE IF EXISTS `tbltransaccion`;
+DROP TABLE IF EXISTS `tbltipotransaccion`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tbltransaccion` (
-  `idtblTransaccion` int(11) NOT NULL AUTO_INCREMENT,
-  `FechaHora` datetime NOT NULL,
-  `idDivisa1` int(11) NOT NULL,
-  `idDivisa2` int(11) NOT NULL,
-  `idTipoTransaccion` int(11) NOT NULL,
-  `ValorTotal` float NOT NULL,
-  PRIMARY KEY (`idtblTransaccion`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `tbltipotransaccion` (
+  `idtblTipoTransaccion` int(11) NOT NULL AUTO_INCREMENT,
+  `Descripcion` varchar(45) NOT NULL,
+  PRIMARY KEY (`idtblTipoTransaccion`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbltransaccion`
+-- Dumping data for table `tbltipotransaccion`
 --
 
-LOCK TABLES `tbltransaccion` WRITE;
-/*!40000 ALTER TABLE `tbltransaccion` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbltransaccion` ENABLE KEYS */;
+LOCK TABLES `tbltipotransaccion` WRITE;
+/*!40000 ALTER TABLE `tbltipotransaccion` DISABLE KEYS */;
+INSERT INTO `tbltipotransaccion` VALUES (1,'COMPRA'),(2,'VENTA');
+/*!40000 ALTER TABLE `tbltipotransaccion` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-09-24  9:27:35
+-- Dump completed on 2019-09-25 13:51:49

@@ -67,14 +67,18 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            tblUsuarioDAO loginDao = new tblUsuarioDAO();
             //Here username and password are the names which I have given in the input box in Login.jsp page. Here I am retrieving the values entered by the user and keeping in instance variables for further use.
 
             Tblusuario usuario = new Tblusuario();
-
             usuario.setUsuario(request.getParameter("usuario"));
-            usuario.setPassword(SecurityHelper.encrypt(request.getParameter("password").getBytes()));
+            usuario.setEmail(request.getParameter("email"));
 
-            tblUsuarioDAO loginDao = new tblUsuarioDAO();
+            Tblusuario usuarioKey = loginDao.obtenerKeyUsuario(usuario);
+            usuario.setLlave(usuarioKey.getLlave());
+
+            usuario.setContrasena(SecurityHelper.encrypt(request.getParameter("password").getBytes(), usuario.getLlave()));
+
             if (loginDao.autenticarUsuario(usuario)) {
                 request.setAttribute("userName", usuario.getUsuario()); //with setAttribute() you can define a "key" and value pair so that you can get it in future using getAttribute("key")
                 request.getRequestDispatcher(RutasConstantes.RUTA_HOME).forward(request, response);//RequestDispatcher is used to send the control to the invoked page.

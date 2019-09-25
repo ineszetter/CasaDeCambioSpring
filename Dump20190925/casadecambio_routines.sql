@@ -18,35 +18,12 @@ USE `casadecambio`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `tblusuario`
+-- Dumping events for database 'casadecambio'
 --
 
-DROP TABLE IF EXISTS `tblusuario`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tblusuario` (
-  `idusuario` int(11) NOT NULL AUTO_INCREMENT,
-  `email` varchar(80) NOT NULL,
-  `usuario` varchar(12) NOT NULL,
-  `password` blob NOT NULL,
-  `key` blob NOT NULL,
-  `creacion` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `ultimoAcceso` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `activo` tinyint(4) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`idusuario`),
-  UNIQUE KEY `email_UNIQUE` (`email`),
-  UNIQUE KEY `usuario_UNIQUE` (`usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
 --
--- Dumping data for table `tblusuario`
+-- Dumping routines for database 'casadecambio'
 --
-
-LOCK TABLES `tblusuario` WRITE;
-/*!40000 ALTER TABLE `tblusuario` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tblusuario` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -57,4 +34,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-09-24  9:27:36
+-- Dump completed on 2019-09-25 13:51:51

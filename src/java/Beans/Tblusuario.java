@@ -52,12 +52,12 @@ public class Tblusuario implements Serializable {
     private String usuario;
     @Basic(optional = false)
     @Lob
-    @Column(name = "password")
-    private byte[] password;
+    @Column(name = "contrasena")
+    private byte[] contrasena;
     @Basic(optional = false)
     @Lob
-    @Column(name = "key")
-    private byte[] key;
+    @Column(name = "llave")
+    private byte[] llave;
     @Basic(optional = false)
     @Column(name = "creacion")
     @Temporal(TemporalType.TIMESTAMP)
@@ -77,12 +77,12 @@ public class Tblusuario implements Serializable {
         this.idusuario = idusuario;
     }
 
-    public Tblusuario(Integer idusuario, String email, String usuario, byte[] password, byte[] key, Date creacion, Date ultimoAcceso, short activo) {
+    public Tblusuario(Integer idusuario, String email, String usuario, byte[] contrasena, byte[] llave, Date creacion, Date ultimoAcceso, short activo) {
         this.idusuario = idusuario;
         this.email = email;
         this.usuario = usuario;
-        this.password = password;
-        this.key = key;
+        this.contrasena = contrasena;
+        this.llave = llave;
         this.creacion = creacion;
         this.ultimoAcceso = ultimoAcceso;
         this.activo = activo;
@@ -112,20 +112,20 @@ public class Tblusuario implements Serializable {
         this.usuario = usuario;
     }
 
-    public byte[] getPassword() {
-        return password;
+    public byte[] getContrasena() {
+        return contrasena;
     }
 
-    public void setPassword(byte[] password) {
-        this.password = password;
+    public void setContrasena(byte[] contrasena) {
+        this.contrasena = contrasena;
     }
 
-    public byte[] getKey() {
-        return key;
+    public byte[] getLlave() {
+        return llave;
     }
 
-    public void setKey(byte[] key) {
-        this.key = key;
+    public void setLlave(byte[] llave) {
+        this.llave = llave;
     }
 
     public Date getCreacion() {
